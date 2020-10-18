@@ -230,6 +230,55 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
+  /delivery:
+    get:
+      tags: ['delivery']
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            format: int32
+            description: 'Number of delivery requests to return'
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            description: 'Page of delivery requests to return'
+          
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: ['picked up', 'in transit', 'delivered']
+        
+      responses:
+        200:
+          description: List the delivery requests for the seller
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Delivery'
+    put:
+      tags: ['delivery']
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Delivery'
+      responses:
+        200:
+          description: Update the delivery requests status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Delivery'
+
   /user/profile:
     get:
       tags: [user]
@@ -448,15 +497,18 @@ components:
           type: string
           format: uuid4
         startDate:
+          readOnly: true
           type: string
           format: datetime
         startLocation:
+          readOnly: true
           $ref: '#/components/schemas/Location'
 
         currentLocation:
           $ref: '#/components/schemas/Location'
 
         deliveryLocation:
+          readOnly: true
           $ref: '#/components/schemas/Location'
         
         deliveryDate:
