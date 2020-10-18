@@ -16,7 +16,6 @@ externalDocs:
   url: www.stackoverflow.com
 servers:
   # Added by API Auto Mocking Plugin
-  # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
     url: https://virtserver.swaggerhub.com/IIITS39/Group36/1.0.0
   - description: SwaggerHub API Auto Mocking
