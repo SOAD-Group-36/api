@@ -59,7 +59,6 @@ Areas of Safety and Quality
       Proper and Regular Quality Checks should be maintained
     * Proper Packing
       Proper and Regular Quality Checks should be maintained
-
     Group II T&C:
     * Maintain Delivery Safety and Privacy
       Advice to use Tamper proof packing
