@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
   title: Local Marketplace
   description: This is set of API's for business to integrate our services in their
@@ -8,79 +8,58 @@ info:
     email: abcd@example.com
   license:
     name: BSD License
-  version: v1.0.0
-host: localhost:8000
-schemes:
-  - http
-basePath: /api
-consumes:
-  - application/json
-produces:
-  - application/json
-securityDefinitions:
-  Delivery:
-    type: apiKey
-    name: Authorization
-    in: header
-  Seller:
-    type: apiKey
-    name: Authorization
-    in: header
+  version: v1.2.1
 security:
   - Delivery: []
   - Seller: []
 paths:
-  /logisticservices/Logisticservices/{id}/:
+  "/logisticservices/Logisticservices/{id}/":
     get:
       operationId: logisticservices_Logisticservices_read
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyLogisticSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyLogisticSerializer"
       tags:
         - logisticservices
     put:
       operationId: logisticservices_Logisticservices_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyLogisticSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyLogisticSerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyLogisticSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyLogisticSerializer"
       tags:
         - logisticservices
     patch:
       operationId: logisticservices_Logisticservices_partial_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyLogisticSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyLogisticSerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyLogisticSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyLogisticSerializer"
       tags:
         - logisticservices
     delete:
       operationId: logisticservices_Logisticservices_delete
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - logisticservices
     parameters:
@@ -88,50 +67,48 @@ paths:
         in: path
         description: A UUID string identifying this logistic services.
         required: true
-        type: string
-        format: uuid
-  /logisticservices/delivery/{id}/:
+        schema:
+          type: string
+          format: uuid
+  "/logisticservices/delivery/{id}/":
     get:
       operationId: logisticservices_delivery_read
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyDeliverySerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyDeliverySerializer"
       tags:
         - logisticservices
     put:
       operationId: logisticservices_delivery_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyDeliverySerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyDeliverySerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyDeliverySerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyDeliverySerializer"
       tags:
         - logisticservices
     patch:
       operationId: logisticservices_delivery_partial_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyDeliverySerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyDeliverySerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyDeliverySerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyDeliverySerializer"
       tags:
         - logisticservices
     parameters:
@@ -139,49 +116,47 @@ paths:
         in: path
         description: A unique integer value identifying this delivery.
         required: true
-        type: integer
-  /orders/Orders/{id}/:
+        schema:
+          type: integer
+  "/orders/Orders/{id}/":
     get:
       operationId: orders_Orders_read
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyOrderSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyOrderSerializer"
       tags:
         - orders
     put:
       operationId: orders_Orders_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyOrderSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyOrderSerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyOrderSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyOrderSerializer"
       tags:
         - orders
     patch:
       operationId: orders_Orders_partial_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyOrderSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyOrderSerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyOrderSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyOrderSerializer"
       tags:
         - orders
     parameters:
@@ -189,89 +164,85 @@ paths:
         in: path
         description: A unique integer value identifying this order.
         required: true
-        type: integer
+        schema:
+          type: integer
   /products/products/:
     get:
       operationId: products_products_list
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '200':
-          description: ''
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/ReadOnlyProductSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReadOnlyProductSerializer"
       tags:
         - products
     post:
       operationId: products_products_create
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyProductSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyProductSerializer"
       responses:
-        '201':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyProductSerializer'
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyProductSerializer"
       tags:
         - products
     parameters: []
-  /products/products/{id}/:
+  "/products/products/{id}/":
     get:
       operationId: products_products_read
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyProductSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyProductSerializer"
       tags:
         - products
     put:
       operationId: products_products_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyProductSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyProductSerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyProductSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyProductSerializer"
       tags:
         - products
     patch:
       operationId: products_products_partial_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlyProductSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlyProductSerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlyProductSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlyProductSerializer"
       tags:
         - products
     delete:
       operationId: products_products_delete
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '204':
-          description: ''
+        "204":
+          description: ""
       tags:
         - products
     parameters:
@@ -279,82 +250,83 @@ paths:
         in: path
         description: A unique integer value identifying this product.
         required: true
-        type: integer
+        schema:
+          type: integer
   /seller/deliverylist/:
     get:
       operationId: seller_deliverylist_list
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '200':
-          description: ''
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Logistic'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Logistic"
       tags:
         - seller
     parameters: []
   /seller/deliverypost/:
     post:
       operationId: seller_deliverypost_create
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/SellerDelivery'
+      description: ""
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SellerDelivery"
+        required: true
       responses:
-        '201':
-          description: ''
-          schema:
-            $ref: '#/definitions/SellerDelivery'
+        "201":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SellerDelivery"
       tags:
         - seller
     parameters: []
-  /seller/{id}/:
+  "/seller/{id}/":
     get:
       operationId: seller_read
-      description: ''
-      parameters: []
+      description: ""
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlySellerSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlySellerSerializer"
       tags:
         - seller
     put:
       operationId: seller_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlySellerSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlySellerSerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlySellerSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlySellerSerializer"
       tags:
         - seller
     patch:
       operationId: seller_partial_update
-      description: ''
-      parameters:
-        - name: data
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/WriteOnlySellerSerializer'
+      description: ""
+      requestBody:
+        $ref: "#/components/requestBodies/WriteOnlySellerSerializer"
       responses:
-        '200':
-          description: ''
-          schema:
-            $ref: '#/definitions/ReadOnlySellerSerializer'
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadOnlySellerSerializer"
       tags:
         - seller
     parameters:
@@ -362,818 +334,862 @@ paths:
         in: path
         description: A UUID string identifying this seller.
         required: true
-        type: string
-        format: uuid
-definitions:
-  ReadOnlyLogisticSerializer:
-    required:
-      - address
-      - phone
-      - pan
-      - gst
-    type: object
-    properties:
-      firstName:
-        title: Firstname
-        type: string
-        maxLength: 150
-      lastName:
-        title: Lastname
-        type: string
-        maxLength: 150
-      address:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      phone:
-        title: Phone
-        type: string
-        maxLength: 13
-        minLength: 1
-      pan:
-        title: Pan
-        type: string
-        maxLength: 13
-        minLength: 1
-      gst:
-        title: Gst
-        type: string
-        maxLength: 13
-        minLength: 1
-  WriteOnlyLogisticSerializer:
-    required:
-      - address
-      - phone
-      - pan
-      - gst
-    type: object
-    properties:
-      firstName:
-        title: Firstname
-        type: string
-        maxLength: 150
-      lastName:
-        title: Lastname
-        type: string
-        maxLength: 150
-      address:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      phone:
-        title: Phone
-        type: string
-        maxLength: 13
-        minLength: 1
-      pan:
-        title: Pan
-        type: string
-        maxLength: 13
-        minLength: 1
-      gst:
-        title: Gst
-        type: string
-        maxLength: 13
-        minLength: 1
-  Product:
-    title: Product
-    required:
-      - name
-      - price
-    type: object
-    properties:
-      id:
-        title: ID
-        type: integer
-        readOnly: true
-      name:
-        title: Name
-        type: string
-        maxLength: 180
-        minLength: 1
-      price:
-        title: Price
-        type: string
-        format: decimal
-  Order:
-    title: Order
-    required:
-      - price
-      - address
-    type: object
-    properties:
-      user:
-        title: User
-        type: string
-        readOnly: true
-      product:
-        $ref: '#/definitions/Product'
-      quantity:
-        title: Quantity
-        type: integer
-      price:
-        title: Price
-        type: string
-        format: decimal
-      placed_on:
-        title: Placed on
-        type: string
-        format: date-time
-        readOnly: true
-      status:
-        title: Status
-        type: string
-        enum:
-          - Pl
-          - Pr
-          - Pk
-          - Sh
-          - Dl
-          - Rj
-          - Rt
-          - Rc
-      address:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-  Logistic:
-    title: Service
-    required:
-      - address
-      - phone
-      - pan
-      - gst
-    type: object
-    properties:
-      firstName:
-        title: Firstname
-        type: string
-        maxLength: 150
-      lastName:
-        title: Lastname
-        type: string
-        maxLength: 150
-      address:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      phone:
-        title: Phone
-        type: string
-        maxLength: 13
-        minLength: 1
-      pan:
-        title: Pan
-        type: string
-        maxLength: 13
-        minLength: 1
-      gst:
-        title: Gst
-        type: string
-        maxLength: 13
-        minLength: 1
-  ReadOnlyDeliverySerializer:
-    required:
-      - current
-      - origin
-      - destination
-    type: object
-    properties:
-      order:
-        $ref: '#/definitions/Order'
-      service:
-        $ref: '#/definitions/Logistic'
-      current:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      origin:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      destination:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      receiver:
-        title: Receiver
-        type: string
-        readOnly: true
-      status:
-        title: Status
-        type: string
-        enum:
-          - Pr
-          - Pu
-          - Tr
-          - Dl
-          - Rt
-          - Rc
-          - Do
-  WriteOnlyDeliverySerializer:
-    required:
-      - current
-      - origin
-      - destination
-    type: object
-    properties:
-      current:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      origin:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      destination:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      status:
-        title: Status
-        type: string
-        enum:
-          - Pr
-          - Pu
-          - Tr
-          - Dl
-          - Rt
-          - Rc
-          - Do
-  ReadOnlyOrderSerializer:
-    required:
-      - price
-      - address
-    type: object
-    properties:
-      user:
-        title: User
-        type: string
-        readOnly: true
-      product:
-        $ref: '#/definitions/Product'
-      quantity:
-        title: Quantity
-        type: integer
-      price:
-        title: Price
-        type: string
-        format: decimal
-      placed_on:
-        title: Placed on
-        type: string
-        format: date-time
-        readOnly: true
-      status:
-        title: Status
-        type: string
-        enum:
-          - Pl
-          - Pr
-          - Pk
-          - Sh
-          - Dl
-          - Rj
-          - Rt
-          - Rc
-      address:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-  WriteOnlyOrderSerializer:
-    required:
-      - price
-      - address
-    type: object
-    properties:
-      quantity:
-        title: Quantity
-        type: integer
-      price:
-        title: Price
-        type: string
-        format: decimal
-      status:
-        title: Status
-        type: string
-        enum:
-          - Pl
-          - Pr
-          - Pk
-          - Sh
-          - Dl
-          - Rj
-          - Rt
-          - Rc
-      address:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-  ReadOnlyProductSerializer:
-    required:
-      - seller
-      - name
-      - description
-      - price
-      - weight
-      - length
-      - height
-      - width
-    type: object
-    properties:
-      id:
-        title: ID
-        type: integer
-        readOnly: true
-      seller:
-        title: Seller
-        type: string
-      name:
-        title: Name
-        type: string
-        maxLength: 180
-        minLength: 1
-      description:
-        title: Description
-        type: string
-        minLength: 1
-      stock:
-        title: Stock
-        type: integer
-      price:
-        title: Price
-        type: string
-        format: decimal
-      weight:
-        title: Weight(gm)
-        type: integer
-      length:
-        title: Length(mm)
-        type: integer
-      height:
-        title: Height(mm)
-        type: integer
-      width:
-        title: Width(mm)
-        type: integer
-      images:
-        type: array
-        items:
+        schema:
           type: string
-        readOnly: true
-        uniqueItems: true
-  WriteOnlyProductSerializer:
-    required:
-      - seller
-      - name
-      - description
-      - price
-      - weight
-      - length
-      - height
-      - width
-    type: object
-    properties:
-      seller:
-        title: Seller
-        type: string
-      name:
-        title: Name
-        type: string
-        maxLength: 180
-        minLength: 1
-      description:
-        title: Description
-        type: string
-        minLength: 1
-      stock:
-        title: Stock
-        type: integer
-      price:
-        title: Price
-        type: string
-        format: decimal
-      weight:
-        title: Weight(gm)
-        type: integer
-      length:
-        title: Length(mm)
-        type: integer
-      height:
-        title: Height(mm)
-        type: integer
-      width:
-        title: Width(mm)
-        type: integer
-  SellerDelivery:
-    required:
-      - order
-      - service
-    type: object
-    properties:
-      order:
-        title: Order
-        type: integer
-      service:
-        title: Service
-        type: string
-  ReadOnlySellerSerializer:
-    required:
-      - address
-      - email
-      - phone
-      - pan
-      - gst
-    type: object
-    properties:
-      id:
-        title: Id
-        type: string
-        format: uuid
-      firstName:
-        title: Firstname
-        type: string
-        maxLength: 150
-      lastName:
-        title: Lastname
-        type: string
-        maxLength: 150
-      address:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
+          format: uuid
+servers:
+  - url: http://localhost:8000/api
+components:
+  requestBodies:
+    WriteOnlyOrderSerializer:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/WriteOnlyOrderSerializer"
+      required: true
+    WriteOnlyProductSerializer:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/WriteOnlyProductSerializer"
+      required: true
+    WriteOnlyLogisticSerializer:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/WriteOnlyLogisticSerializer"
+      required: true
+    WriteOnlyDeliverySerializer:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/WriteOnlyDeliverySerializer"
+      required: true
+    WriteOnlySellerSerializer:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/WriteOnlySellerSerializer"
+      required: true
+  securitySchemes:
+    Delivery:
+      type: apiKey
+      name: Authorization
+      in: header
+    Seller:
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    ReadOnlyLogisticSerializer:
+      required:
+        - address
+        - phone
+        - pan
+        - gst
+      type: object
+      properties:
+        firstName:
+          title: Firstname
+          type: string
+          maxLength: 150
+        lastName:
+          title: Lastname
+          type: string
+          maxLength: 150
+        address:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        phone:
+          title: Phone
+          type: string
+          maxLength: 13
+          minLength: 1
+        pan:
+          title: Pan
+          type: string
+          maxLength: 13
+          minLength: 1
+        gst:
+          title: Gst
+          type: string
+          maxLength: 13
+          minLength: 1
+    WriteOnlyLogisticSerializer:
+      required:
+        - address
+        - phone
+        - pan
+        - gst
+      type: object
+      properties:
+        firstName:
+          title: Firstname
+          type: string
+          maxLength: 150
+        lastName:
+          title: Lastname
+          type: string
+          maxLength: 150
+        address:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        phone:
+          title: Phone
+          type: string
+          maxLength: 13
+          minLength: 1
+        pan:
+          title: Pan
+          type: string
+          maxLength: 13
+          minLength: 1
+        gst:
+          title: Gst
+          type: string
+          maxLength: 13
+          minLength: 1
+    Product:
+      title: Product
+      required:
+        - name
+        - price
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        name:
+          title: Name
+          type: string
+          maxLength: 180
+          minLength: 1
+        price:
+          title: Price
+          type: string
+          format: decimal
+    Order:
+      title: Order
+      required:
+        - price
+        - address
+      type: object
+      properties:
+        user:
+          title: User
+          type: string
+          readOnly: true
+        product:
+          $ref: "#/components/schemas/Product"
+        quantity:
+          title: Quantity
+          type: integer
+        price:
+          title: Price
+          type: string
+          format: decimal
+        placed_on:
+          title: Placed on
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          title: Status
+          type: string
+          enum:
+            - Pl
+            - Pr
+            - Pk
+            - Sh
+            - Dl
+            - Rj
+            - Rt
+            - Rc
+        address:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+    Logistic:
+      title: Service
+      required:
+        - address
+        - phone
+        - pan
+        - gst
+      type: object
+      properties:
+        firstName:
+          title: Firstname
+          type: string
+          maxLength: 150
+        lastName:
+          title: Lastname
+          type: string
+          maxLength: 150
+        address:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        phone:
+          title: Phone
+          type: string
+          maxLength: 13
+          minLength: 1
+        pan:
+          title: Pan
+          type: string
+          maxLength: 13
+          minLength: 1
+        gst:
+          title: Gst
+          type: string
+          maxLength: 13
+          minLength: 1
+    ReadOnlyDeliverySerializer:
+      required:
+        - current
+        - origin
+        - destination
+      type: object
+      properties:
+        order:
+          $ref: "#/components/schemas/Order"
+        service:
+          $ref: "#/components/schemas/Logistic"
+        current:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        origin:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        destination:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        receiver:
+          title: Receiver
+          type: string
+          readOnly: true
+        status:
+          title: Status
+          type: string
+          enum:
+            - Pr
+            - Pu
+            - Tr
+            - Dl
+            - Rt
+            - Rc
+            - Do
+    WriteOnlyDeliverySerializer:
+      required:
+        - current
+        - origin
+        - destination
+      type: object
+      properties:
+        current:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        origin:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        destination:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        status:
+          title: Status
+          type: string
+          enum:
+            - Pr
+            - Pu
+            - Tr
+            - Dl
+            - Rt
+            - Rc
+            - Do
+    ReadOnlyOrderSerializer:
+      required:
+        - price
+        - address
+      type: object
+      properties:
+        user:
+          title: User
+          type: string
+          readOnly: true
+        product:
+          $ref: "#/components/schemas/Product"
+        quantity:
+          title: Quantity
+          type: integer
+        price:
+          title: Price
+          type: string
+          format: decimal
+        placed_on:
+          title: Placed on
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          title: Status
+          type: string
+          enum:
+            - Pl
+            - Pr
+            - Pk
+            - Sh
+            - Dl
+            - Rj
+            - Rt
+            - Rc
+        address:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+    WriteOnlyOrderSerializer:
+      required:
+        - price
+        - address
+      type: object
+      properties:
+        quantity:
+          title: Quantity
+          type: integer
+        price:
+          title: Price
+          type: string
+          format: decimal
+        status:
+          title: Status
+          type: string
+          enum:
+            - Pl
+            - Pr
+            - Pk
+            - Sh
+            - Dl
+            - Rj
+            - Rt
+            - Rc
+        address:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+    ReadOnlyProductSerializer:
+      required:
+        - seller
+        - name
+        - description
+        - price
+        - weight
+        - length
+        - height
+        - width
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        seller:
+          title: Seller
+          type: string
+        name:
+          title: Name
+          type: string
+          maxLength: 180
+          minLength: 1
+        description:
+          title: Description
+          type: string
+          minLength: 1
+        stock:
+          title: Stock
+          type: integer
+        price:
+          title: Price
+          type: string
+          format: decimal
+        weight:
+          title: Weight(gm)
+          type: integer
+        length:
+          title: Length(mm)
+          type: integer
+        height:
+          title: Height(mm)
+          type: integer
+        width:
+          title: Width(mm)
+          type: integer
+        images:
+          type: array
+          items:
             type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      email:
-        title: Email
-        type: string
-        format: email
-        maxLength: 254
-        minLength: 1
-      phone:
-        title: Phone
-        type: string
-        maxLength: 13
-        minLength: 1
-      pan:
-        title: Pan
-        type: string
-        maxLength: 13
-        minLength: 1
-      gst:
-        title: Gst
-        type: string
-        maxLength: 13
-        minLength: 1
-  WriteOnlySellerSerializer:
-    required:
-      - address
-      - email
-      - phone
-      - pan
-      - gst
-    type: object
-    properties:
-      id:
-        title: Id
-        type: string
-        format: uuid
-      firstName:
-        title: Firstname
-        type: string
-        maxLength: 150
-      lastName:
-        title: Lastname
-        type: string
-        maxLength: 150
-      address:
-        title: Address
-        type: object
-        properties:
-          pincode:
-            title: Pin Code
-            type: string
-          state:
-            title: State
-            type: string
-          city:
-            title: City
-            type: string
-          landmark:
-            title: Landmark
-            type: string
-          houseNo:
-            title: House No
-            type: string
-          streetName:
-            title: Street Name
-            type: string
-        required:
-          - pincode
-          - state
-          - city
-      email:
-        title: Email
-        type: string
-        format: email
-        maxLength: 254
-        minLength: 1
-      phone:
-        title: Phone
-        type: string
-        maxLength: 13
-        minLength: 1
-      pan:
-        title: Pan
-        type: string
-        maxLength: 13
-        minLength: 1
-      gst:
-        title: Gst
-        type: string
-        maxLength: 13
-        minLength: 1
+          readOnly: true
+          uniqueItems: true
+    WriteOnlyProductSerializer:
+      required:
+        - seller
+        - name
+        - description
+        - price
+        - weight
+        - length
+        - height
+        - width
+      type: object
+      properties:
+        seller:
+          title: Seller
+          type: string
+        name:
+          title: Name
+          type: string
+          maxLength: 180
+          minLength: 1
+        description:
+          title: Description
+          type: string
+          minLength: 1
+        stock:
+          title: Stock
+          type: integer
+        price:
+          title: Price
+          type: string
+          format: decimal
+        weight:
+          title: Weight(gm)
+          type: integer
+        length:
+          title: Length(mm)
+          type: integer
+        height:
+          title: Height(mm)
+          type: integer
+        width:
+          title: Width(mm)
+          type: integer
+    SellerDelivery:
+      required:
+        - order
+        - service
+      type: object
+      properties:
+        order:
+          title: Order
+          type: integer
+        service:
+          title: Service
+          type: string
+    ReadOnlySellerSerializer:
+      required:
+        - address
+        - email
+        - phone
+        - pan
+        - gst
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+        firstName:
+          title: Firstname
+          type: string
+          maxLength: 150
+        lastName:
+          title: Lastname
+          type: string
+          maxLength: 150
+        address:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        email:
+          title: Email
+          type: string
+          format: email
+          maxLength: 254
+          minLength: 1
+        phone:
+          title: Phone
+          type: string
+          maxLength: 13
+          minLength: 1
+        pan:
+          title: Pan
+          type: string
+          maxLength: 13
+          minLength: 1
+        gst:
+          title: Gst
+          type: string
+          maxLength: 13
+          minLength: 1
+    WriteOnlySellerSerializer:
+      required:
+        - address
+        - email
+        - phone
+        - pan
+        - gst
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+        firstName:
+          title: Firstname
+          type: string
+          maxLength: 150
+        lastName:
+          title: Lastname
+          type: string
+          maxLength: 150
+        address:
+          title: Address
+          type: object
+          properties:
+            pincode:
+              title: Pin Code
+              type: string
+            state:
+              title: State
+              type: string
+            city:
+              title: City
+              type: string
+            landmark:
+              title: Landmark
+              type: string
+            houseNo:
+              title: House No
+              type: string
+            streetName:
+              title: Street Name
+              type: string
+          required:
+            - pincode
+            - state
+            - city
+        email:
+          title: Email
+          type: string
+          format: email
+          maxLength: 254
+          minLength: 1
+        phone:
+          title: Phone
+          type: string
+          maxLength: 13
+          minLength: 1
+        pan:
+          title: Pan
+          type: string
+          maxLength: 13
+          minLength: 1
+        gst:
+          title: Gst
+          type: string
+          maxLength: 13
+          minLength: 1
